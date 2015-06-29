@@ -38,7 +38,7 @@ AppAsset::register($this);
             
             if (Yii::$app->user->isGuest) {
                 $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
-		$menuItems[] = ['label' => 'Cpe GAG', 'url' => Url::to('http://www.cpe-gag.tanguy-falconnet.com')];
+		
             }else {
                 if(array_key_exists('admin', Yii::$app->authManager->getRolesByUser(Yii::$app->user->id))){
                     $menuItems[] = ['label' => 'Users Management', 'url' => ['user/index']];
@@ -51,6 +51,7 @@ AppAsset::register($this);
                     'linkOptions' => ['data-method' => 'post']
                 ];
             }
+	    $menuItems[] = ['label' => 'Cpe GAG', 'url' => Url::to('http://www.cpe-gag.tanguy-falconnet.com')];
             echo Nav::widget([
                 'options' => ['class' => 'navbar-nav navbar-right'],
                 'items' => $menuItems,
