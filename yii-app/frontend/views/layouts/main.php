@@ -5,6 +5,7 @@ use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use frontend\assets\AppAsset;
 use frontend\widgets\Alert;
+use yii\helpers\Url;
 
 /* @var $this \yii\web\View */
 /* @var $content string */
@@ -45,6 +46,7 @@ AppAsset::register($this);
                     'url' => ['/site/logout'],
                     'linkOptions' => ['data-method' => 'post']
                 ];
+                $menuItems[] = ['label' => 'Administration', 'url' => Url::to('http://www.admin-cpe-gag.tanguy-falconnet.com')];
             }
             echo Nav::widget([
                 'options' => ['class' => 'navbar-nav navbar-right'],

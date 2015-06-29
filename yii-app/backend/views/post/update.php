@@ -19,6 +19,8 @@ $this->params['breadcrumbs'][] = 'Update';
 
     <?= $form->field($model, 'title') ?>
 
+    <img src="data:image;base64,<?= $model->image ?>" alt="<?= $model->id ?>" style="width:10%;height:10%;"/>
+
     <div class="form-group">
         <?= Html::submitButton('Update', ['class' => 'btn btn-primary']) ?>
     </div>

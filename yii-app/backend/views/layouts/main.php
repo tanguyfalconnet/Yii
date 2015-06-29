@@ -4,6 +4,7 @@ use yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
+use yii\helpers\Url;
 
 /* @var $this \yii\web\View */
 /* @var $content string */
@@ -37,6 +38,7 @@ AppAsset::register($this);
             
             if (Yii::$app->user->isGuest) {
                 $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
+		$menuItems[] = ['label' => 'Cpe GAG', 'url' => Url::to('http://www.cpe-gag.tanguy-falconnet.com')];
             }else {
                 if(array_key_exists('admin', Yii::$app->authManager->getRolesByUser(Yii::$app->user->id))){
                     $menuItems[] = ['label' => 'Users Management', 'url' => ['user/index']];
