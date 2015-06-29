@@ -78,6 +78,7 @@ class PostController extends Controller
                 
         if ($model->load(Yii::$app->request->post())) {
             $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
+            
             if($model->create()){
                 return $this->redirect(['site/index']);
             }

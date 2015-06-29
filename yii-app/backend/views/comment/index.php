@@ -25,7 +25,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'template' => '{view}',
                 'buttons' => [
                     'view' => function ($url, $model, $key) {
-                        return Html::img('@web/'.$model->post->image, ['alt' => $model->post->id, 'style' => 'width:10%;height:10%;']);
+                        return '<img src="data:image;base64,'.$model->post->image.'" alt="'.$model->post->id.'" style="width:10%;height:10%;"/>';
                     }
                 ]
                 

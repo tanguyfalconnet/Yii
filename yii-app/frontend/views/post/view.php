@@ -30,7 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
         }
         ?>
     </p>
-    <?= Html::img('@web/'.$modelPost->image, ['alt' => $modelPost->id, 'style' => 'max-width:40%;max-height:30%;']) ?>
+    <img src="data:image;base64,<?= $modelPost->image ?>" alt="<?= $modelPost->id ?>" style="max-width:80%;max-height:60%;margin-left:30%;"/>
     <?= DetailView::widget([
         'model' => $modelPost,
         'attributes' => [
