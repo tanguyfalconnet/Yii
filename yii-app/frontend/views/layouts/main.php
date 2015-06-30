@@ -40,6 +40,10 @@ AppAsset::register($this);
                 $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
                 $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
             } else {
+                $notifs = Yii::$app->user->identity->getNotifications()->where(['is_watched' => 0]);
+                $menuItems[] = ['label' => 'Notification '.$notifs->count(), 
+                    'url' => ['notification/index']];
+                
                 $menuItems[] = ['label' => 'Create post', 'url' => ['/post/create']];
                 $menuItems[] = [
                     'label' => 'Logout (' . Yii::$app->user->identity->username . ')',

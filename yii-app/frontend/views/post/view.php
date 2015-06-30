@@ -16,10 +16,10 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>
         <?php 
-        if(Yii::$app->user->can('updatePost', ['id' => $modelPost->id])){
+        if(Yii::$app->user->can('updatePost', ['id' => $modelPost->user_id])){
             echo Html::a('Update', ['update', 'id' => $modelPost->id], ['class' => 'btn btn-primary']);
         }
-        if(Yii::$app->user->can('deletePost', ['id' => $modelPost->id])){
+        if(Yii::$app->user->can('deletePost', ['id' => $modelPost->user_id])){
             echo Html::a('Delete', ['delete', 'id' => $modelPost->id], [
                 'class' => 'btn btn-danger',
                 'data' => [

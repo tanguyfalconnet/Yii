@@ -17,10 +17,11 @@ $this->params['breadcrumbs'][] = 'Update';
     <h1><?= Html::encode($this->title) ?></h1>
 
     <?php $form = ActiveForm::begin();
-        echo $form->field($model, 'username');
         echo $form->field($model, 'email');
         echo $form->field($model, 'password')->passwordInput();
-        echo $form->field($model, 'role')->dropDownList($model->getAvailableRoles());
+        if(array_key_exists('admin', Yii::$app->authManager->getRolesByUser(Yii::$app->user->id))){
+            echo $form->field($model, 'role')->dropDownList($model->getAvailableRoles());
+        }
         if(Yii::$app->user->can('updateUser', ['id' => $model->getId()])){
             echo '<div class="form-group">';
                 echo Html::submitButton('Update', ['class' => 'btn btn-primary']);

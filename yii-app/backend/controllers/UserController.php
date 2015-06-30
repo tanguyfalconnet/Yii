@@ -28,6 +28,11 @@ class UserController extends Controller
                         'allow' => true,
                         'actions' => ['index', 'view', 'create', 'update', 'delete'],
                         'roles' => ['admin'],
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['view', 'update'],
+                        'roles' => ['user', 'moderator'],
                     ]
                 ],
                 'denyCallback' => function ($rule, $action) {
@@ -65,9 +70,12 @@ class UserController extends Controller
      */
     public function actionView($id)
     {
-        return $this->render('view', [
-            'model' => $this->findModel($id),
-        ]);
+        if (Yii::$app->user->can('updateUser', ['id' => $id])) {
+            return $this->render('view', [
+                'model' => $this->findModel($id),
+            ]);
+        }
+        return $this->redirect(['site/index']);
     }
 
     /**
@@ -104,10 +112,13 @@ class UserController extends Controller
         if (Yii::$app->user->can('updateUser', ['id' => $id])) {
             $model = new UpdateUserForm($id);
 
-            if ($model->load(Yii::$app->request->post()) && $model->update()) {
-                $auth = Yii::$app->authManager;
-                $auth->revokeAll($id);
-                $auth->assign($auth->getRole($model->getAvailableRoles()[$model->role]), $id);
+            if ($model->load(Yii::$app->request->post()) && $model->update() ){
+                if(array_key_exists('admin', Yii::$app->authManager->getRolesByUser(Yii::$app->user->id))) {
+                    $auth = Yii::$app->authManager;
+                    $auth->revokeAll($id);
+                    var_dump($model->role);
+                    $auth->assign($auth->getRole($model->role), $id);
+                }
                 return $this->redirect(['view', 'id' => $model->getId()]);
             }
             return $this->render('update', [

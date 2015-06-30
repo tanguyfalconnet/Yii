@@ -13,6 +13,8 @@ use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use yii\web\UploadedFile;
 use yii\data\ActiveDataProvider;
+use frontend\models\Notification;
+use yii\helpers\Url;
 
 /**
  * PostController implements the CRUD actions for Post model.
@@ -58,6 +60,29 @@ class PostController extends Controller
         ]);
         
         if ($model->load(Yii::$app->request->post()) && $model->create($id)) {
+            
+            $post = $this->findModel($id);
+            if(Yii::$app->user->id != $post->user_id){
+                //Notify the one who create the post
+                $notif = new Notification();
+                $notif->link = Url::to(['post/view', 'id' => $id]);
+                $notif->message = Yii::$app->user->identity->username.' commented on your post';
+                $notif->user_id = $post->user_id;
+                $notif->save();
+                
+            }
+            //Notify those who comments the post
+            $users = [Yii::$app->user->id, $post->user_id];
+            foreach ($post->comments as $value) {
+                if(!in_array($value->user_id, $users)){
+                    $notif = new Notification();
+                    $notif->link = Url::to(['post/view', 'id' => $id]);
+                    $notif->message = Yii::$app->user->identity->username.' commented on your post';
+                    $notif->user_id = $value->user_id;
+                    $notif->save();
+                    $users[] = $value->user_id;
+                }
+            }
             return $this->redirect(['view', 'id' => $id]);
         }
         return $this->render('view', [

@@ -40,9 +40,10 @@ AppAsset::register($this);
                 $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
 		
             }else {
-                if(array_key_exists('admin', Yii::$app->authManager->getRolesByUser(Yii::$app->user->id))){
+                if(Yii::$app->authManager->getAssignment('admin', Yii::$app->user->id) != null){
                     $menuItems[] = ['label' => 'Users Management', 'url' => ['user/index']];
                 }
+                $menuItems[] = ['label' => 'Account', 'url' => ['user/view', 'id' => Yii::$app->user->id]];
                 $menuItems[] = ['label' => 'Posts Management', 'url' => ['post/index']];
                 $menuItems[] = ['label' => 'Comments Management', 'url' => ['comment/index']];
                 $menuItems[] = [

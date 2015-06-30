@@ -7,8 +7,9 @@ use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
 use yii\web\IdentityInterface;
 use common\models\AuthentificationAssignment;
-use frontend\models\Post;
-use frontend\models\Comment;
+use common\models\Post;
+use common\models\Comment;
+use frontend\models\Notification;
 
 /**
  * User model
@@ -204,5 +205,10 @@ class User extends ActiveRecord implements IdentityInterface
     public function getComments()
     {
         return $this->hasMany(Comment::className(), ['user_id' => 'id']);
+    }
+    
+    public function getNotifications()
+    {
+        return $this->hasMany(Notification::className(), ['user_id' => 'id']);
     }
 }
