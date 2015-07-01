@@ -145,7 +145,10 @@ class PostController extends Controller
         foreach ($model->comments as $value){
             $value->delete();
         }
-        $model->delete();
+        
+        if($model->delete() !== false){
+            Yii::$app->cache->delete(Post::tableName().'_'.$id);
+        }
 
         return $this->redirect(['site/index']);
     }
@@ -159,10 +162,15 @@ class PostController extends Controller
      */
     protected function findModel($id)
     {
-        if (($model = Post::findOne($id)) !== null) {
-            return $model;
-        } else {
-            throw new NotFoundHttpException('The requested page does not exist.');
+        $model = Yii::$app->cache->get(Post::tableName().'_'.$id);
+        if ($model === false) {
+            if (($model = Post::findOne($id)) !== null) {
+                Yii::$app->cache->set(Post::tableName().'_'.$id, $model);
+            } else {
+                throw new NotFoundHttpException('The requested page does not exist.');
+            }
         }
+        
+        return $model;
     }
 }

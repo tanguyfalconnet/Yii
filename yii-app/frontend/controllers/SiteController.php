@@ -69,12 +69,18 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
+        
+        
         $dataProvider = new ActiveDataProvider([
             'query' => Post::find()->orderBy(['created_at' => SORT_DESC]),
             'pagination' => [
                 'pageSize' => 20,
             ],
         ]);
+        //Put posts loaded in a cache
+        foreach($dataProvider->getModels() as $post){
+            Yii::$app->cache->set(Post::tableName().'_'.$post->id, $post);
+        }
         return $this->render('index', ['dataProvider' => $dataProvider]);
     }
 
