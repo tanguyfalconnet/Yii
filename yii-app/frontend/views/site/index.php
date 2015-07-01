@@ -5,7 +5,7 @@ use yii\widgets\ListView;
 /* @var $model common\models\Post */
 /* @var $form yii\widgets\ActiveForm */
 /* @var dataProvider yii\data\ActiveDataProvider */
-$this->title = 'Falcotatoe Company';
+$this->title = 'Tartine-toi';
 
 
 echo ListView::widget([

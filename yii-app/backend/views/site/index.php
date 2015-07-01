@@ -1,7 +1,7 @@
 <?php
 /* @var $this yii\web\View */
 
-$this->title = 'Falcotatoe Company';
+$this->title = 'Tartine-toi';
 ?>
 <div class="site-index">
 
