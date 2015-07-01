@@ -52,8 +52,7 @@ AppAsset::register($this);
                     'linkOptions' => ['data-method' => 'post']
                 ];
             }
-	    $menuItems[] = ['label' => 'Cpe GAG', 'url' => Url::to('http://www.cpe-gag.tanguy-falconnet.com')];
-            echo Nav::widget([
+	    echo Nav::widget([
                 'options' => ['class' => 'navbar-nav navbar-right'],
                 'items' => $menuItems,
             ]);
@@ -71,7 +70,7 @@ AppAsset::register($this);
     <footer class="footer">
         <div class="container">
         <p class="pull-left">&copy; Falcotatoe Company <?= date('Y') ?></p>
-        <p class="pull-right"><?= Yii::powered() ?></p>
+        <p class="pull-right"><a href="http://www.cpe-gag.tanguy-falconnet.com/" >Cpe GAG</a></p>
         </div>
     </footer>
 

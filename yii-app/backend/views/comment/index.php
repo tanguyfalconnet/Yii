@@ -21,13 +21,9 @@ $this->params['breadcrumbs'][] = $this->title;
             'text:ntext',
             [
                 'header' => 'Image',
-                'class' => 'yii\grid\ActionColumn',
-                'template' => '{view}',
-                'buttons' => [
-                    'view' => function ($url, $model, $key) {
-                        return '<img src="data:image;base64,'.$model->post->image.'" alt="'.$model->post->id.'" style="width:10%;height:10%;"/>';
-                    }
-                ]
+                'content' => function ($model, $key, $index, $column) {
+                    return '<img src="data:image;base64,'.$model->post->image.'" alt="'.$model->post->id.'" style="width:10%;height:10%;"/>';
+                }
                 
             ],
             [

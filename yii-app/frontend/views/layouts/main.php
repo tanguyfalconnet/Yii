@@ -50,7 +50,6 @@ AppAsset::register($this);
                     'url' => ['/site/logout'],
                     'linkOptions' => ['data-method' => 'post']
                 ];
-                $menuItems[] = ['label' => 'Administration', 'url' => Url::to('http://www.admin-cpe-gag.tanguy-falconnet.com')];
             }
             echo Nav::widget([
                 'options' => ['class' => 'navbar-nav navbar-right'],
@@ -71,7 +70,7 @@ AppAsset::register($this);
     <footer class="footer">
         <div class="container">
         <p class="pull-left">&copy; Falcotatoe Company <?= date('Y') ?></p>
-        <p class="pull-right"><?= Yii::powered() ?></p>
+        <p class="pull-right"><a href="http://www.admin-cpe-gag.tanguy-falconnet.com/" >Admin</a></p>
         </div>
     </footer>
 
