@@ -41,7 +41,13 @@ AppAsset::register($this);
                 $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
             } else {
                 $notifs = Yii::$app->user->identity->getNotifications()->where(['is_watched' => 0]);
-                $menuItems[] = ['label' => 'Notification '.$notifs->count(), 
+                $count = $notifs->count();
+                if($count == 0){
+                    $badge = '<span class="badge alert-default">'.$count.'</span>';
+                }else{
+                    $badge = '<span class="badge alert-info">'.$count.'</span>';
+                }
+                $menuItems[] = ['label' => 'Notifications '.$badge, 
                     'url' => ['notification/index']];
                 
                 $menuItems[] = ['label' => 'Create post', 'url' => ['/post/create']];
@@ -54,6 +60,7 @@ AppAsset::register($this);
             echo Nav::widget([
                 'options' => ['class' => 'navbar-nav navbar-right'],
                 'items' => $menuItems,
+                'encodeLabels' => false
             ]);
             NavBar::end();
         ?>
