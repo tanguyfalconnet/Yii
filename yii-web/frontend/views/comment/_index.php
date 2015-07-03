@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use common\models\Smiley;
 
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -13,10 +14,15 @@ use yii\grid\GridView;
         'layout' => '{items}{pager}',
         'showHeader' => false,
         'tableOptions' => ['class' => 'table'],
+        'summary' => '',
         'emptyText' => '',
         'columns' => [
             'user.username',
-            'text:ntext',
+            [
+                'content' => function($model, $key, $index, $column){
+                    return Smiley::emo(Html::encode($model->text));
+                }
+            ],
             [
                 'class' => 'yii\grid\ActionColumn',
                 'template' => '{update}{delete}',

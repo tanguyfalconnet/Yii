@@ -29,7 +29,6 @@ return [
             'errorAction' => 'site/error',
         ],
         'urlManager'=> [
-            'urlFormat'=>'path',
             'showScriptName'=>false,
             'rules'=> [
                     '<controller:\w+>/<id:\d+>'=>'<controller>/view',

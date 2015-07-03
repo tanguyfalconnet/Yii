@@ -28,6 +28,8 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php echo GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+        'summary' => '',
+        'emptyText' => '',
         'columns' => [
             'username',
             'email:email',

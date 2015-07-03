@@ -11,6 +11,7 @@ $this->title = 'Tartine-toi';
 echo ListView::widget([
     'dataProvider' => $dataProvider,
     'itemView' => '_post',
-    'summary' => ''
+    'summary' => '',
+    'emptyText' => ''
 ]);
 ?>
