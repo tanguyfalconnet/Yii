@@ -77,7 +77,7 @@ class PostController extends Controller
                 if(!in_array($value->user_id, $users)){
                     $notif = new Notification();
                     $notif->link = Url::to(['post/view', 'id' => $id]);
-                    $notif->message = Yii::$app->user->identity->username.' commented on your post';
+                    $notif->message = Yii::$app->user->identity->username.' commented on a post you commented before';
                     $notif->user_id = $value->user_id;
                     $notif->save();
                     $users[] = $value->user_id;

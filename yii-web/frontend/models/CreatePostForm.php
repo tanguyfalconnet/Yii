@@ -30,7 +30,9 @@ class CreatePostForm extends Model
             $post->title = $this->title;
             $post->user_id = Yii::$app->user->id;
             if($post->save(false)){
-                $post->image = base64_encode(file_get_contents($this->imageFile->tempName));
+                $path = 'uploads/' . $post->id . '.' . $this->imageFile->extension;
+                $this->imageFile->saveAs($path);
+                $post->image = $path;
                 return $post->save(); 
             }
         }

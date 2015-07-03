@@ -70,7 +70,7 @@ AppAsset::register($this);
     <footer class="footer">
         <div class="container">
         <p class="pull-left">&copy; Tartine-toi <?= date('Y') ?></p>
-        <p class="pull-right"><a href="http://www.cpe-gag.tanguy-falconnet.com/" >Cpe GAG</a></p>
+        <p class="pull-right"><a href="http://www.tartine.tanguy-falconnet.com/" >Tartine-toi</a></p>
         </div>
     </footer>
 

@@ -22,7 +22,7 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'header' => 'Image',
                 'content' => function ($model, $key, $index, $column) {
-                    return '<img src="data:image;base64,'.$model->image.'" alt="'.$model->id.'" style="width:10%;height:10%;"/>';
+                    return Html::img($model->image, ['alt' => $model->id, 'style' => 'width:10%;height:10%;']);
                 }
                 
             ],

@@ -18,7 +18,7 @@ $this->params['breadcrumbs'][] = 'Update';
     
     <?= $form->field($model, 'text')->textarea(['rows' => 2]) ?>
     
-    <?= Html::img('@web/'.$model->post->image, ['alt' => $model->id, 'style' => 'width:40%;height:30%;']); ?>
+    <?= Html::img($model->post->image, ['alt' => $model->id, 'style' => 'width:40%;height:30%;']); ?>
 
     <div class="form-group">
         <?= Html::submitButton('Update', ['class' => 'btn btn-primary']) ?>
