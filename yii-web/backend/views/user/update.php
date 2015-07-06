@@ -21,7 +21,7 @@ $this->params['breadcrumbs'][] = 'Update';
         echo $form->field($model, 'email');
         echo $form->field($model, 'password')->passwordInput();
         if(array_key_exists('admin', Yii::$app->authManager->getRolesByUser(Yii::$app->user->id))){
-            echo $form->field($model, 'role')->dropDownList($model->getAvailableRoles());
+            echo $form->field($model, 'role')->dropDownList($model->available_role);
         }
         if(Yii::$app->user->can('updateUser', ['id' => $model->getId()])){
             echo '<div class="form-group">';

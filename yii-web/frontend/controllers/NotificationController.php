@@ -52,15 +52,17 @@ class NotificationController extends Controller
                 'pageSize' => 20,
             ],
         ]);
-        
-        foreach ($notifs->all() as $notif) {
-            $notif->is_watched = 1;
-            $notif->save();
-        }
 
         return $this->render('index', [
             'dataProvider' => $dataProvider,
         ]);
+    }
+    
+    public function actionView($idNotif, $idPost){
+        $model = $this->findModel($idNotif);
+        $model->is_watched = 1;
+        $model->save();
+        return $this->redirect(['post/view', 'id' => $idPost]);
     }
 
     /**

@@ -16,6 +16,7 @@ class UpdateUserForm extends Model
     public $email;
     public $password;
     public $role;
+    public $available_role;
 
     /**
      * @var \common\models\User
@@ -39,9 +40,11 @@ class UpdateUserForm extends Model
         $this->username = $this->_user->username;
         $this->email = $this->_user->email;
         $this->displayed_name = $this->_user->displayed_name;
+        
         if($this->role = $this->_user->authentificationAssignment){
             $this->role = $this->_user->authentificationAssignment->item_name;
         }
+        $this->available_role = $this->getAvailableRoles();
         $this->password = '****';
         parent::__construct($config);
     }
@@ -98,7 +101,7 @@ class UpdateUserForm extends Model
             if(!empty($this->displayed_name)){
                 $user->displayed_name = $this->displayed_name;
             }
-            $this->role = $this->getAvailableRoles()[$this->role];
+            $this->role = $this->available_role[$this->role];
             return $user->save();
         }
         
@@ -110,7 +113,7 @@ class UpdateUserForm extends Model
         return $this->_user->getId();
     }
     
-    public function getAvailableRoles() {
+    private function getAvailableRoles() {
         $query = new Query;
         // compose the query
         $query->select('name')
@@ -120,8 +123,9 @@ class UpdateUserForm extends Model
         // put currently user role at first 
         $availableRoles = $query->column();
         $index = array_search($this->role, $availableRoles);
-        $out = array_splice($availableRoles, 0, 1);
-        array_splice($availableRoles, $index, 0, $out);
+        $tmp = $availableRoles[0];
+        $availableRoles[0] = $this->role;
+        $availableRoles[$index] = $tmp;
         return $availableRoles;
     }
 }

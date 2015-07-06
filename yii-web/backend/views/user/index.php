@@ -30,6 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'summary' => '',
         'emptyText' => '',
         'columns' => [
+            'username',
             'displayed_name',
             'email:email',
             [

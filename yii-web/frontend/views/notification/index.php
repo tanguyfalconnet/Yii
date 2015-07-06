@@ -21,7 +21,15 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'header' => 'Message',
                 'content' => function ($model, $key, $index, $column){
-                    return Html::a($model->message, $model->link);
+                    if($model->is_watched == 1)
+                    {
+                        return Html::a($model->message, $model->link);
+                    }
+                    else
+                    {
+                        return Html::tag('b', Html::a($model->message, $model->link));
+                    }
+                    
                 }
             ],
             [
