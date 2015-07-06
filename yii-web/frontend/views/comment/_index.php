@@ -20,7 +20,7 @@ use common\models\Smiley;
             'user.username',
             [
                 'content' => function($model, $key, $index, $column){
-                    return Smiley::emo(Html::encode($model->text));
+                    return Smiley::emo(Html::encode($model->text), Smiley::$COMMENT);
                 }
             ],
             [

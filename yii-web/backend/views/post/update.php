@@ -2,13 +2,13 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use common\models\Smiley;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\Post */
 
-$this->title = 'Update Post: ' . ' ' . $model->title;
-$this->params['breadcrumbs'][] = ['label' => 'Posts', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->title, 'url' => ['view', 'id' => $model->id]];
+$this->title = 'Update Post';
+$this->params['breadcrumbs'][] = ['label' => 'Posts management', 'url' => ['index']];
 $this->params['breadcrumbs'][] = 'Update';
 ?>
 <div class="post-update">

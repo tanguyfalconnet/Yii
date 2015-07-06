@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use common\models\Smiley;
 
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -18,8 +19,13 @@ $this->params['breadcrumbs'][] = $this->title;
         'summary' => '',
         'emptyText' => '',
         'columns' => [
-
-            'text:ntext',
+            [
+                'header' => 'Comment',
+                'content' => function ($model, $key, $index, $column) {
+                    return Smiley::emo(Html::encode($model->text),Smiley::$COMMENT);
+                }
+                
+            ],
             [
                 'header' => 'Image',
                 'content' => function ($model, $key, $index, $column) {

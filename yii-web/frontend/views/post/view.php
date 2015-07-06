@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use common\models\Smiley;
 
 /* @var $this yii\web\View */
 /* @var $modelPost common\models\Post */
@@ -12,7 +13,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="post-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h1><?= Smiley::emo(Html::encode($modelPost->title),Smiley::$TITLE) ?></h1>
 
     <p>
         <?php 
