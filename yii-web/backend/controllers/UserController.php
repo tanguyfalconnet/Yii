@@ -113,7 +113,8 @@ class UserController extends Controller
             $model = new UpdateUserForm($id);
 
             if ($model->load(Yii::$app->request->post()) && $model->update() ){
-                if(array_key_exists('admin', Yii::$app->authManager->getRolesByUser(Yii::$app->user->id))) {
+                $auth = Yii::$app->authManager;
+                if($auth->getAssignment('admin', Yii::$app->user->id) != null && Yii::$app->user->id != $id) {
                     $auth = Yii::$app->authManager;
                     $auth->revokeAll($id);
                     var_dump($model->role);

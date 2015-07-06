@@ -7,9 +7,9 @@ use yii\widgets\ActiveForm;
 /* @var $model backend\models\UpdateUserForm */
 /* @var $form yii\widgets\ActiveForm */
 
-$this->title = 'Update User ' . ' ' . $model->username;
+$this->title = 'Update User ' . ' ' . $model->displayed_name;
 $this->params['breadcrumbs'][] = ['label' => 'Users Management', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => 'User '.$model->username, 'url' => ['view', 'id' => $model->getId()]];
+$this->params['breadcrumbs'][] = ['label' => 'User '.$model->displayed_name, 'url' => ['view', 'id' => $model->getId()]];
 $this->params['breadcrumbs'][] = 'Update';
 ?>
 <div class="user-update">
@@ -17,6 +17,7 @@ $this->params['breadcrumbs'][] = 'Update';
     <h1><?= Html::encode($this->title) ?></h1>
 
     <?php $form = ActiveForm::begin();
+        echo $form->field($model, 'displayed_name');
         echo $form->field($model, 'email');
         echo $form->field($model, 'password')->passwordInput();
         if(array_key_exists('admin', Yii::$app->authManager->getRolesByUser(Yii::$app->user->id))){

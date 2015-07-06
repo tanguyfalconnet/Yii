@@ -8,7 +8,7 @@ use common\models\Smiley;
 ?>
 <div class="post">
     <h2><?= Smiley::emo(Html::encode($model->title), Smiley::$TITLE) ?></h2>
-    <h6><?= Html::label(Html::encode($model->user->username)) ?> </h6>
+    <h6><?= Html::label(Html::encode($model->user->displayed_name)) ?> </h6>
     <a href="<?= Url::to(['post/view', 'id' => $model->id]); ?>" style="margin-left:30%;">
         <?= Html::img($model->image, [ 'alt' => $model->id, 'style' => 'max-width:40%;max-height:30%;']) ?>
     </a>

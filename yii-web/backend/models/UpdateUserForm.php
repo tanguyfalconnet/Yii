@@ -12,6 +12,7 @@ use yii\db\Query;
 class UpdateUserForm extends Model
 {
     public $username;
+    public $displayed_name;
     public $email;
     public $password;
     public $role;
@@ -37,6 +38,7 @@ class UpdateUserForm extends Model
         }
         $this->username = $this->_user->username;
         $this->email = $this->_user->email;
+        $this->displayed_name = $this->_user->displayed_name;
         if($this->role = $this->_user->authentificationAssignment){
             $this->role = $this->_user->authentificationAssignment->item_name;
         }
@@ -58,9 +60,20 @@ class UpdateUserForm extends Model
             ['email', 'email'],
             ['email', 'unique', 'filter' => ['not', ['id' => $this->getId()]],'targetClass' => '\common\models\User', 'message' => 'This email address has already been taken.'],
             
+            ['displayed_name', 'filter', 'filter' => 'trim'],
+            ['displayed_name', 'required'],
+            ['displayed_name', 'unique', 'filter' => ['not', ['id' => $this->getId()]],'targetClass' => '\common\models\User', 'message' => 'This displayed name has already been taken.'],
+            ['displayed_name', 'compare', 'compareAttribute' => 'username', 'operator' => '!=', 'message' => 'This displayed name shall be different than username.'],
+            ['displayed_name', 'string', 'min' => 2, 'max' => 255],
+            
+            ['displayed_name', 'filter', 'filter' => 'trim'],
+            ['displayed_name', 'unique', 'filter' => ['not', ['id' => $this->getId()]], 'targetClass' => '\common\models\User', 'message' => 'This displayed name has already been taken.'],
+            ['displayed_name', 'compare', 'compareAttribute' => 'username', 'operator' => '!=', 'message' => 'This displayed name shall be different than username.'],
+            ['displayed_name', 'string', 'min' => 2, 'max' => 255],
+            
             ['password', 'string'],
             
-            [['username', 'email', 'role'], 'required']
+            [['username', 'email', 'role', 'displayed_name'], 'required']
         ];
     }
 
@@ -82,6 +95,10 @@ class UpdateUserForm extends Model
             if(!empty($this->username)){
                 $user->username = $this->username;
             }
+            if(!empty($this->displayed_name)){
+                $user->displayed_name = $this->displayed_name;
+            }
+            $this->role = $this->getAvailableRoles()[$this->role];
             return $user->save();
         }
         

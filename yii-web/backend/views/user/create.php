@@ -20,6 +20,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?php $form = ActiveForm::begin(); ?>
         <?= $form->field($model, 'username') ?>
+        <?= $form->field($model, 'displayed_name') ?>
         <?= $form->field($model, 'email') ?>
         <?= $form->field($model, 'password')->passwordInput() ?>
         <?= $form->field($model, 'role')->dropDownList($model->getAvailableRoles()) ?>

@@ -36,7 +36,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $modelPost,
         'attributes' => [
             [
-                'attribute'=>'user.username',
+                'attribute'=>'user.displayed_name',
                 'label' => 'Created By'
             ],
         ],

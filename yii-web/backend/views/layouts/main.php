@@ -47,7 +47,7 @@ AppAsset::register($this);
                 $menuItems[] = ['label' => 'Posts Management', 'url' => ['post/index']];
                 $menuItems[] = ['label' => 'Comments Management', 'url' => ['comment/index']];
                 $menuItems[] = [
-                    'label' => 'Logout (' . Yii::$app->user->identity->username . ')',
+                    'label' => 'Logout (' . Yii::$app->user->identity->displayed_name . ')',
                     'url' => ['/site/logout'],
                     'linkOptions' => ['data-method' => 'post']
                 ];

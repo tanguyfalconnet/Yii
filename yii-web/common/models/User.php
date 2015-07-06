@@ -16,6 +16,7 @@ use frontend\models\Notification;
  *
  * @property integer $id
  * @property string $username
+ * @property string $displayed_name
  * @property string $password_hash
  * @property string $password_reset_token
  * @property string $email

@@ -6,7 +6,7 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model common\models\User */
 
-$this->title = 'User '.$model->username;
+$this->title = 'User '.$model->displayed_name;
 $this->params['breadcrumbs'][] = ['label' => 'Users Management', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -35,7 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'username',
+            'displayed_name',
             'email:email',
             [
                 'attribute'=>'authentificationAssignment.item_name',

@@ -11,6 +11,7 @@ use yii\db\Query;
 class CreateUserForm extends Model
 {
     public $username;
+    public $displayed_name;
     public $email;
     public $password;
     public $role;
@@ -27,6 +28,12 @@ class CreateUserForm extends Model
             ['username', 'unique', 'targetClass' => '\common\models\User', 'message' => 'This username has already been taken.'],
             ['username', 'string', 'min' => 2, 'max' => 255],
 
+            ['displayed_name', 'filter', 'filter' => 'trim'],
+            ['displayed_name', 'required'],
+            ['displayed_name', 'unique', 'targetClass' => '\common\models\User', 'message' => 'This displayed name has already been taken.'],
+            ['displayed_name', 'compare', 'compareAttribute' => 'username', 'operator' => '!=', 'message' => 'This displayed name shall be different than username.'],
+            ['displayed_name', 'string', 'min' => 2, 'max' => 255],
+            
             ['email', 'filter', 'filter' => 'trim'],
             ['email', 'required'],
             ['email', 'email'],
@@ -51,6 +58,7 @@ class CreateUserForm extends Model
             $user = new User();
             $user->username = $this->username;
             $user->email = $this->email;
+            $user->displayed_name = $this->displayed_name;
             $user->setPassword($this->password);
             $user->generateAuthKey();
             if ($user->save()) {

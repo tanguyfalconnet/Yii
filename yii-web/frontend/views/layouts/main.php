@@ -52,7 +52,7 @@ AppAsset::register($this);
                 
                 $menuItems[] = ['label' => 'Create post', 'url' => ['/post/create']];
                 $menuItems[] = [
-                    'label' => 'Logout ('.Html::encode(Yii::$app->user->identity->username).')',
+                    'label' => 'Logout ('.Html::encode(Yii::$app->user->identity->displayed_name).')',
                     'url' => ['/site/logout'],
                     'linkOptions' => ['data-method' => 'post']
                 ];

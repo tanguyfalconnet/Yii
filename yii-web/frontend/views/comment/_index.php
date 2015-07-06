@@ -17,7 +17,7 @@ use common\models\Smiley;
         'summary' => '',
         'emptyText' => '',
         'columns' => [
-            'user.username',
+            'user.displayed_name',
             [
                 'content' => function($model, $key, $index, $column){
                     return Smiley::emo(Html::encode($model->text), Smiley::$COMMENT);
