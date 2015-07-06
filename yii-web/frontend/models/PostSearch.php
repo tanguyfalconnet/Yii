@@ -22,6 +22,16 @@ class PostSearch extends Post
             [['image'], 'safe'],
         ];
     }
+    
+    /**
+     * @inheritdoc
+     */
+    public function attributeLabels()
+    {
+        return [
+            'image' => Yii::t('frontend', 'Image'),
+        ];
+    }
 
     /**
      * @inheritdoc

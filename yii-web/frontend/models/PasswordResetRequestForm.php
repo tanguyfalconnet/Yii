@@ -27,6 +27,16 @@ class PasswordResetRequestForm extends Model
             ],
         ];
     }
+    
+    /**
+     * @inheritdoc
+     */
+    public function attributeLabels()
+    {
+        return [
+            'email' => Yii::t('frontend', 'Email'),
+        ];
+    }
 
     /**
      * Sends an email with a link, for resetting the password.

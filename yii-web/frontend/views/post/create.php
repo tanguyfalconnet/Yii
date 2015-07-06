@@ -6,8 +6,8 @@ use yii\widgets\ActiveForm;
 /* @var $this yii\web\View */
 /* @var $model frontend\models\CreatePostForm */
 
-$this->title = 'Create Post';
-$this->params['breadcrumbs'][] = ['label' => 'Posts', 'url' => ['index']];
+$this->title = Yii::t('frontend', 'Create Post');
+$this->params['breadcrumbs'][] = ['label' => Yii::t('frontend', 'Posts'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="post-create">
@@ -21,7 +21,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= $form->field($model, 'imageFile')->fileInput() ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Create', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton(Yii::t('frontend', 'Create'), ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

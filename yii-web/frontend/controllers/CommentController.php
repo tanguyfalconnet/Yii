@@ -4,7 +4,6 @@ namespace frontend\controllers;
 
 use Yii;
 use common\models\Comment;
-use frontend\models\CommentSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -37,51 +36,17 @@ class CommentController extends Controller
             ],
         ];
     }
+    
+    function init(){
+        parent::init();
+        $language = Yii::$app->cache->get('language');
+        if($language == false){
+            Yii::$app->cache->set('language', 'en-US');
+            $language = 'en-US';
+        }
+        Yii::$app->language = $language;
+    }
 
-    /**
-     * Lists all Comment models.
-     * @return mixed
-     */
-//    public function actionIndex()
-//    {
-//        $searchModel = new CommentSearch();
-//        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-//
-//        return $this->render('index', [
-//            'searchModel' => $searchModel,
-//            'dataProvider' => $dataProvider,
-//        ]);
-//    }
-
-    /**
-     * Displays a single Comment model.
-     * @param integer $id
-     * @return mixed
-     */
-//    public function actionView($id)
-//    {
-//        return $this->render('view', [
-//            'model' => $this->findModel($id),
-//        ]);
-//    }
-
-    /**
-     * Creates a new Comment model.
-     * If creation is successful, the browser will be redirected to the 'view' page.
-     * @return mixed
-     */
-//    public function actionCreate()
-//    {
-//        $model = new Comment();
-//
-//        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-//            return $this->redirect(['view', 'id' => $model->id]);
-//        } else {
-//            return $this->render('create', [
-//                'model' => $model,
-//            ]);
-//        }
-//    }
 
     /**
      * Updates an existing Comment model.

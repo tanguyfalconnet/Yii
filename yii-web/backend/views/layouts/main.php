@@ -4,7 +4,6 @@ use yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
-use yii\helpers\Url;
 
 /* @var $this \yii\web\View */
 /* @var $content string */
@@ -33,28 +32,38 @@ AppAsset::register($this);
                 ],
             ]);
             $menuItems = [
-                ['label' => 'Home', 'url' => ['/site/index']],
+                ['label' => Yii::t('backend', 'Home'), 'url' => ['/site/index']],
             ];
             
             if (Yii::$app->user->isGuest) {
-                $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
+                $menuItems[] = ['label' => Yii::t('backend', 'Login'), 'url' => ['/site/login']];
 		
             }else {
+                $menuItems[] = ['label' => Yii::t('backend', 'Account'), 'url' => ['user/view', 'id' => Yii::$app->user->id]];
                 if(Yii::$app->authManager->getAssignment('admin', Yii::$app->user->id) != null){
-                    $menuItems[] = ['label' => 'Users Management', 'url' => ['user/index']];
+                    $menuItems[] = ['label' => Yii::t('backend', 'Users Management'), 'url' => ['user/index']];
                 }
-                $menuItems[] = ['label' => 'Account', 'url' => ['user/view', 'id' => Yii::$app->user->id]];
-                $menuItems[] = ['label' => 'Posts Management', 'url' => ['post/index']];
-                $menuItems[] = ['label' => 'Comments Management', 'url' => ['comment/index']];
+                $menuItems[] = ['label' => Yii::t('backend', 'Posts Management'), 'url' => ['post/index']];
+                $menuItems[] = ['label' => Yii::t('backend', 'Comments Management'), 'url' => ['comment/index']];
                 $menuItems[] = [
-                    'label' => 'Logout (' . Yii::$app->user->identity->displayed_name . ')',
+                    'label' => Yii::t('backend', 'Logout').' (' . Html::encode(Yii::$app->user->identity->displayed_name) . ')',
                     'url' => ['/site/logout'],
                     'linkOptions' => ['data-method' => 'post']
                 ];
             }
+            if(Yii::$app->cache->get('language') == 'en-US'){
+                $menuItems[] = ['label' => Html::img('images/flags/fr-FR.jpg'), 
+                'url' => ['site/languagefrfr'],
+                'linkOptions' => ['data-method' => 'post']];
+            }else if(Yii::$app->cache->get('language') == 'fr-FR'){
+                $menuItems[] = ['label' => Html::img('images/flags/en-US.jpg'), 
+                'url' => ['site/languageenus'],
+                'linkOptions' => ['data-method' => 'post']];
+            }
 	    echo Nav::widget([
                 'options' => ['class' => 'navbar-nav navbar-right'],
                 'items' => $menuItems,
+                'encodeLabels' => false
             ]);
             NavBar::end();
         ?>

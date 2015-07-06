@@ -57,10 +57,7 @@ class Comment extends ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'post_id' => 'Post ID',
-            'user_id' => 'User ID',
-            'text' => 'Text'
+            'text' => Yii::t('common', 'Text')
         ];
     }
 

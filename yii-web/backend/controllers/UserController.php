@@ -47,6 +47,16 @@ class UserController extends Controller
             ],
         ];
     }
+    
+    function init(){
+        parent::init();
+        $language = Yii::$app->cache->get('language');
+        if($language == false){
+            Yii::$app->cache->set('language', 'en-US');
+            $language = 'en-US';
+        }
+        Yii::$app->language = $language;
+    }
 
     /**
      * Lists all User models.

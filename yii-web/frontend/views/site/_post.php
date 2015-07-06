@@ -12,6 +12,6 @@ use common\models\Smiley;
     <a href="<?= Url::to(['post/view', 'id' => $model->id]); ?>" style="margin-left:30%;">
         <?= Html::img($model->image, [ 'alt' => $model->id, 'style' => 'max-width:40%;max-height:30%;']) ?>
     </a>
-    <h6><?= Html::label('Comments : '.$model->getComments()->count()) ?> </h6>
+    <h6><?= Html::label(Yii::t('frontend', 'Comments').' : '.$model->getComments()->count()) ?> </h6>
     <hr>
 </div>

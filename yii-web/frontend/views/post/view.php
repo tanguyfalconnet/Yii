@@ -18,13 +18,13 @@ $this->params['breadcrumbs'][] = $this->title;
     <p>
         <?php 
         if(Yii::$app->user->can('updatePost', ['id' => $modelPost->user_id])){
-            echo Html::a('Update', ['update', 'id' => $modelPost->id], ['class' => 'btn btn-primary']);
+            echo Html::a(Yii::t('frontend', 'Update'), ['update', 'id' => $modelPost->id], ['class' => 'btn btn-primary']);
         }
         if(Yii::$app->user->can('deletePost', ['id' => $modelPost->user_id])){
-            echo Html::a('Delete', ['delete', 'id' => $modelPost->id], [
+            echo Html::a(Yii::t('frontend', 'Delete'), ['delete', 'id' => $modelPost->id], [
                 'class' => 'btn btn-danger',
                 'data' => [
-                    'confirm' => 'Are you sure you want to delete this item?',
+                    'confirm' => Yii::t('frontend', 'Are you sure you want to delete this item?'),
                     'method' => 'post',
                 ],
             ]);
@@ -37,7 +37,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             [
                 'attribute'=>'user.displayed_name',
-                'label' => 'Created By'
+                'label' => Yii::t('frontend', 'Created By')
             ],
         ],
     ]) ?>

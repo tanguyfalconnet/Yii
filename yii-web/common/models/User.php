@@ -61,6 +61,18 @@ class User extends ActiveRecord implements IdentityInterface
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DELETED]],
         ];
     }
+    
+    /**
+     * @inheritdoc
+     */
+    public function attributeLabels()
+    {
+        return [
+            'username' => Yii::t('common', 'Username'),
+            'displayed_name' => Yii::t('common', 'Displayed Name'),
+            'email' => Yii::t('common', 'Email'),
+        ];
+    }
 
     /**
      * @inheritdoc

@@ -45,6 +45,16 @@ class UpdatePostForm extends Model
         ];
     }
     
+    /**
+     * @inheritdoc
+     */
+    public function attributeLabels()
+    {
+        return [
+            'title' => Yii::t('frontend', 'Title'),
+        ];
+    }
+    
     public function update()
     {
         if ($this->validate()) {

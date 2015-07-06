@@ -46,6 +46,19 @@ class CreateUserForm extends Model
             ['role', 'string'],
         ];
     }
+    
+    /**
+     * @inheritdoc
+     */
+    public function attributeLabels()
+    {
+        return [
+            'username' => Yii::t('backend', 'Username'),
+            'displayed_name' => Yii::t('backend', 'Displayed Name'),
+            'email' => Yii::t('backend', 'Email'),
+            'password' => Yii::t('backend', 'Password'),
+        ];
+    }
 
     /**
      * Signs user up.

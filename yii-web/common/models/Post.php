@@ -2,6 +2,7 @@
 
 namespace common\models;
 
+use Yii;
 use yii\behaviors\TimestampBehavior;
 use common\models\User;
 use common\models\Comment;
@@ -36,6 +37,7 @@ class Post extends \yii\db\ActiveRecord
             TimestampBehavior::className(),
         ];
     }
+    
 
     /**
      * @inheritdoc
@@ -54,8 +56,8 @@ class Post extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'title' => 'Title',
-            'image' => 'Image',
+            'title' => Yii::t('common', 'Title'),
+            'image' => Yii::t('common', 'Image'),
         ];
     }
 

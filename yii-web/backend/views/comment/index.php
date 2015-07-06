@@ -7,7 +7,7 @@ use common\models\Smiley;
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Comments Management';
+$this->title = Yii::t('backend', 'Comments Management');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="comment-index">
@@ -20,14 +20,14 @@ $this->params['breadcrumbs'][] = $this->title;
         'emptyText' => '',
         'columns' => [
             [
-                'header' => 'Comment',
+                'header' => Yii::t('backend', 'Comment'),
                 'content' => function ($model, $key, $index, $column) {
                     return Smiley::emo(Html::encode($model->text),Smiley::$COMMENT);
                 }
                 
             ],
             [
-                'header' => 'Image',
+                'header' => Yii::t('backend', 'Image'),
                 'content' => function ($model, $key, $index, $column) {
                     return Html::img($model->post->image, ['alt' => $model->post->id, 'style' => 'width:10%;height:10%;']);
                 }
@@ -47,7 +47,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         if(Yii::$app->user->can('deletePost', ['id' => $model->user_id])){
                             return Html::a('<span class="glyphicon glyphicon-trash">', ['delete', 'id' => $model->id], [
                                 'data' => [
-                                    'confirm' => 'Are you sure you want to delete this item?',
+                                    'confirm' => Yii::t('backend', 'Are you sure you want to delete this item?'),
                                     'method' => 'post',
                                 ]]);
                             }

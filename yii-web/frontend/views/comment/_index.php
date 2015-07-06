@@ -37,7 +37,7 @@ use common\models\Smiley;
                         if(Yii::$app->user->can('deletePost', ['id' => $model->user_id])){
                             return Html::a('<span class="glyphicon glyphicon-trash">', ['comment/delete', 'id' => $model->id], [
                                 'data' => [
-                                    'confirm' => 'Are you sure you want to delete this item?',
+                                    'confirm' => Yii::t('frontend', 'Are you sure you want to delete this item?'),
                                     'method' => 'post',
                                 ]]);
                             }

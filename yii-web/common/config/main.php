@@ -2,6 +2,34 @@
 return [
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
     'components' => [
+        'i18n' => [
+            'translations' => [
+                'frontend' => [
+                    'class' => 'yii\i18n\PhpMessageSource',
+                    'basePath' => '@common/translations',
+                    'sourceLanguage' => 'en-US',
+                    'fileMap' => [
+                        'app' => 'frontend.php'
+                    ],
+                ],
+                'backend' => [
+                    'class' => 'yii\i18n\PhpMessageSource',
+                    'basePath' => '@common/translations',
+                    'sourceLanguage' => 'en-US',
+                    'fileMap' => [
+                        'app' => 'backend.php'
+                    ],
+                ],
+                'common' => [
+                    'class' => 'yii\i18n\PhpMessageSource',
+                    'basePath' => '@common/translations',
+                    'sourceLanguage' => 'en-US',
+                    'fileMap' => [
+                        'app' => 'common.php'
+                    ],
+                ],
+            ],
+        ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
@@ -12,4 +40,9 @@ return [
             'class' => 'yii\caching\FileCache'
         ],
     ],
+    // set target language to be Russian
+    'language' => 'fr-FR',
+    
+    // set source language to be English
+    'sourceLanguage' => 'en-US',
 ];

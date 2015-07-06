@@ -5,6 +5,7 @@ use common\models\User;
 use yii\base\InvalidParamException;
 use yii\base\Model;
 use yii\db\Query;
+use Yii;
 
 /**
  * Password reset form
@@ -77,6 +78,19 @@ class UpdateUserForm extends Model
             ['password', 'string'],
             
             [['username', 'email', 'role', 'displayed_name'], 'required']
+        ];
+    }
+    
+    /**
+     * @inheritdoc
+     */
+    public function attributeLabels()
+    {
+        return [
+            'username' => Yii::t('backend', 'Username'),
+            'displayed_name' => Yii::t('backend', 'Displayed Name'),
+            'email' => Yii::t('backend', 'Email'),
+            'password' => Yii::t('backend', 'Password'),
         ];
     }
 

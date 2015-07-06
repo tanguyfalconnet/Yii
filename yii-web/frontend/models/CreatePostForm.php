@@ -23,6 +23,17 @@ class CreatePostForm extends Model
         ];
     }
     
+    /**
+     * @inheritdoc
+     */
+    public function attributeLabels()
+    {
+        return [
+            'title' => Yii::t('frontend', 'Title'),
+            'imageFile' => Yii::t('frontend', 'Image'),
+        ];
+    }
+    
     public function create()
     {
         if ($this->validate()) {

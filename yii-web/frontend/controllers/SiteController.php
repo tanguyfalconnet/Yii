@@ -46,9 +46,21 @@ class SiteController extends Controller
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'logout' => ['post'],
+                    'languagefrfr' => ['post'],
+                    'languageenus' => ['post'],
                 ],
             ],
         ];
+    }
+    
+    function init(){
+        parent::init();
+        $language = Yii::$app->cache->get('language');
+        if($language == false){
+            Yii::$app->cache->set('language', 'en-US');
+            $language = 'en-US';
+        }
+        Yii::$app->language = $language;
     }
 
     /**
@@ -69,8 +81,6 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
-        
-        
         $dataProvider = new ActiveDataProvider([
             'query' => Post::find()->orderBy(['created_at' => SORT_DESC]),
             'pagination' => [
@@ -183,5 +193,17 @@ class SiteController extends Controller
         return $this->render('resetPassword', [
             'model' => $model,
         ]);
+    }
+    
+    public function actionLanguagefrfr()
+    {
+        Yii::$app->language = Yii::$app->cache->set('language', 'fr-FR');
+        return $this->goHome();
+    }
+    
+    public function actionLanguageenus()
+    {
+        Yii::$app->language = Yii::$app->cache->set('language', 'en-US');
+        return $this->goHome();
     }
 }

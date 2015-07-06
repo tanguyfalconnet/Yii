@@ -6,7 +6,7 @@ use yii\grid\GridView;
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Notifications';
+$this->title = Yii::t('frontend', 'Notifications');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="notification-index">
@@ -19,7 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'emptyText' => '',
         'columns' => [
             [
-                'header' => 'Message',
+                'header' => Yii::t('frontend', 'Message'),
                 'content' => function ($model, $key, $index, $column){
                     if($model->is_watched == 1)
                     {
@@ -33,7 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 }
             ],
             [
-                'header' => 'Date',
+                'header' => Yii::t('frontend', 'Date'),
                 'content' => function ($model, $key, $index, $column){
                     return Html::encode(date('H:i:s d-m-Y ', $model->created_at));
                 }

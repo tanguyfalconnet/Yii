@@ -6,8 +6,8 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model common\models\User */
 
-$this->title = 'User '.$model->displayed_name;
-$this->params['breadcrumbs'][] = ['label' => 'Users Management', 'url' => ['index']];
+$this->title = Yii::t('backend', 'User').' '.$model->displayed_name;
+$this->params['breadcrumbs'][] = ['label' => Yii::t('backend', 'Users Management'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="user-view">
@@ -17,13 +17,13 @@ $this->params['breadcrumbs'][] = $this->title;
     <p>
         <?php
         if(Yii::$app->user->can('updateUser', ['id' => $model->id])){
-            echo Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']);
+            echo Html::a(Yii::t('backend', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']);
         }
         if(Yii::$app->user->can('deleteUser', ['id' => $model->id])){
-            echo Html::a('Delete', ['delete', 'id' => $model->id], [
+            echo Html::a(Yii::t('backend', 'Delete'), ['delete', 'id' => $model->id], [
                 'class' => 'btn btn-danger',
                 'data' => [
-                    'confirm' => 'Are you sure you want to delete this item?',
+                    'confirm' => Yii::t('backend', 'Are you sure you want to delete this item?'),
                     'method' => 'post',
                 ],
             ]);
@@ -40,7 +40,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'email:email',
             [
                 'attribute'=>'authentificationAssignment.item_name',
-                'label' => 'Role'
+                'label' => Yii::t('backend', 'Role')
             ],
         ],
     ]) ?>

@@ -22,7 +22,7 @@ class SiteController extends Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['login', 'error'],
+                        'actions' => ['login', 'error', 'languagefrfr', 'languageenus'],
                         'allow' => true,
                     ],
                     [
@@ -36,9 +36,21 @@ class SiteController extends Controller
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'logout' => ['post'],
+                    'languagefrfr' => ['post'],
+                    'languageenus' => ['post'],
                 ],
             ],
         ];
+    }
+    
+    function init(){
+        parent::init();
+        $language = Yii::$app->cache->get('language');
+        if($language == false){
+            Yii::$app->cache->set('language', 'en-US');
+            $language = 'en-US';
+        }
+        Yii::$app->language = $language;
     }
 
     /**
@@ -78,6 +90,18 @@ class SiteController extends Controller
     {
         Yii::$app->user->logout();
 
+        return $this->goHome();
+    }
+    
+    public function actionLanguagefrfr()
+    {
+        Yii::$app->language = Yii::$app->cache->set('language', 'fr-FR');
+        return $this->goHome();
+    }
+    
+    public function actionLanguageenus()
+    {
+        Yii::$app->language = Yii::$app->cache->set('language', 'en-US');
         return $this->goHome();
     }
 }

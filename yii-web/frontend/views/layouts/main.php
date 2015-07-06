@@ -5,7 +5,6 @@ use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use frontend\assets\AppAsset;
 use frontend\widgets\Alert;
-use yii\helpers\Url;
 
 /* @var $this \yii\web\View */
 /* @var $content string */
@@ -34,11 +33,11 @@ AppAsset::register($this);
                 ],
             ]);
             $menuItems = [
-                ['label' => 'Home', 'url' => ['/site/index']]
+                ['label' => Yii::t('frontend', 'Home'), 'url' => ['/site/index']]
             ];
             if (Yii::$app->user->isGuest) {
-                $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
-                $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
+                $menuItems[] = ['label' => Yii::t('frontend', 'Signup'), 'url' => ['/site/signup']];
+                $menuItems[] = ['label' => Yii::t('frontend', 'Login'), 'url' => ['/site/login']];
             } else {
                 $notifs = Yii::$app->user->identity->getNotifications()->where(['is_watched' => 0]);
                 $count = $notifs->count();
@@ -47,16 +46,28 @@ AppAsset::register($this);
                 }else{
                     $badge = '<span class="badge alert-info">'.$count.'</span>';
                 }
-                $menuItems[] = ['label' => 'Notifications '.$badge, 
+                $menuItems[] = ['label' => Yii::t('frontend', 'Notifications').$badge, 
                     'url' => ['notification/index']];
                 
-                $menuItems[] = ['label' => 'Create post', 'url' => ['/post/create']];
+                $menuItems[] = ['label' => Yii::t('frontend', 'Create Post'), 'url' => ['/post/create']];
                 $menuItems[] = [
-                    'label' => 'Logout ('.Html::encode(Yii::$app->user->identity->displayed_name).')',
+                    'label' => Yii::t('frontend', 'Logout').' ('.Html::encode(Yii::$app->user->identity->displayed_name).')',
                     'url' => ['/site/logout'],
                     'linkOptions' => ['data-method' => 'post']
                 ];
             }
+            
+            if(Yii::$app->cache->get('language') == 'en-US'){
+                $menuItems[] = ['label' => Html::img('images/flags/fr-FR.jpg'), 
+                'url' => ['site/languagefrfr'],
+                'linkOptions' => ['data-method' => 'post']];
+            }else if(Yii::$app->cache->get('language') == 'fr-FR'){
+                $menuItems[] = ['label' => Html::img('images/flags/en-US.jpg'), 
+                'url' => ['site/languageenus'],
+                'linkOptions' => ['data-method' => 'post']];
+            }
+            
+            
             echo Nav::widget([
                 'options' => ['class' => 'navbar-nav navbar-right'],
                 'items' => $menuItems,
@@ -77,7 +88,7 @@ AppAsset::register($this);
     <footer class="footer">
         <div class="container">
         <p class="pull-left">&copy; Tartine-toi <?= date('Y') ?></p>
-        <p class="pull-right"><a href="http://www.tartine.tanguy-falconnet.com/backend.php" >Admin</a></p>
+        <p class="pull-right"><a href="http://www.tartine.tanguy-falconnet.com/backend.php"><?= Yii::t('frontend', 'Admin') ?></a></p>
         </div>
     </footer>
 

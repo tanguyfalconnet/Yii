@@ -41,6 +41,19 @@ class SignupForm extends Model
             ['password', 'string', 'min' => 6],
         ];
     }
+    
+    /**
+     * @inheritdoc
+     */
+    public function attributeLabels()
+    {
+        return [
+            'username' => Yii::t('frontend', 'Username'),
+            'displayed_name' => Yii::t('frontend', 'Displayed name'),
+            'email' => Yii::t('frontend', 'Email'),
+            'password' => Yii::t('frontend', 'Password'),
+        ];
+    }
 
     /**
      * Create new user.

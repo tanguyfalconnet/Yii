@@ -10,8 +10,8 @@ use yii\widgets\ActiveForm;
 /* @var $role common\models\AuthentificationItem */
 /* @var $form yii\widgets\ActiveForm */
 
-$this->title = 'Create User';
-$this->params['breadcrumbs'][] = ['label' => 'Users Management', 'url' => ['index']];
+$this->title = Yii::t('backend', 'Create User');
+$this->params['breadcrumbs'][] = ['label' => Yii::t('backend', 'Users Management'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="user-create">
@@ -25,7 +25,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= $form->field($model, 'password')->passwordInput() ?>
         <?= $form->field($model, 'role')->dropDownList($model->getAvailableRoles()) ?>
         <div class="form-group">
-            <?= Html::submitButton('Create', ['class' => 'btn btn-primary']) ?>
+            <?= Html::submitButton(Yii::t('backend', 'Create'), ['class' => 'btn btn-primary']) ?>
         </div>
     <?php ActiveForm::end(); ?>
 

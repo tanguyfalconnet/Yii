@@ -21,7 +21,7 @@ $this->params['breadcrumbs'][] = 'Update';
     <?= Html::img($model->post->image, ['alt' => $model->id, 'style' => 'width:40%;height:30%;']); ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Update', ['class' => 'btn btn-primary']) ?>
+        <?= Html::submitButton(Yii::t('backend', 'Update'), ['class' => 'btn btn-primary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

@@ -7,10 +7,10 @@ use yii\widgets\ActiveForm;
 /* @var $model backend\models\UpdateUserForm */
 /* @var $form yii\widgets\ActiveForm */
 
-$this->title = 'Update User ' . ' ' . $model->displayed_name;
-$this->params['breadcrumbs'][] = ['label' => 'Users Management', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => 'User '.$model->displayed_name, 'url' => ['view', 'id' => $model->getId()]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->title = Yii::t('backend', 'Update User') . ' ' . $model->displayed_name;
+$this->params['breadcrumbs'][] = ['label' => Yii::t('backend', 'Users Management'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('backend', 'User').' '.$model->displayed_name, 'url' => ['view', 'id' => $model->getId()]];
+$this->params['breadcrumbs'][] = Yii::t('backend', 'Update');
 ?>
 <div class="user-update">
 
@@ -25,7 +25,7 @@ $this->params['breadcrumbs'][] = 'Update';
         }
         if(Yii::$app->user->can('updateUser', ['id' => $model->getId()])){
             echo '<div class="form-group">';
-                echo Html::submitButton('Update', ['class' => 'btn btn-primary']);
+                echo Html::submitButton(Yii::t('backend', 'Update'), ['class' => 'btn btn-primary']);
             echo "</div>";
         }
     ActiveForm::end(); ?>
