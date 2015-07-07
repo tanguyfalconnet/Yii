@@ -6,7 +6,10 @@ use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use common\models\Tartine;
+use common\models\Post;
+use frontend\models\Notification;
 use Yii;
+use yii\helpers\Url;
 
 class TartineController extends Controller
 {
@@ -53,6 +56,17 @@ class TartineController extends Controller
         $tartine->post_id = $postId;
         $tartine->user_id = Yii::$app->user->id;
         $tartine->save();
+        
+        $post = Post::findOne($postId);
+        if($post->user_id != Yii::$app->user->id){
+            $notif = new Notification();
+            $notif->author = Yii::$app->user->identity->displayed_name;
+            $notif->message = 'spreaded your post';
+            $notif->user_id = $post->user_id;
+            $notif->save(false);
+            $notif->link = Url::to(['notification/view', 'idNotif' => $notif->id, 'idPost' => $postId]);
+            $notif->save(false);
+        }
         return $this->goHome();
     }
 

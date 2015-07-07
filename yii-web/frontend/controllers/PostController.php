@@ -75,7 +75,8 @@ class PostController extends Controller
             if(Yii::$app->user->id != $post->user_id){
                 //Notify the one who create the post
                 $notif = new Notification();
-                $notif->message = Yii::$app->user->identity->displayed_name.' commented on your post';
+                $notif->author = Yii::$app->user->identity->displayed_name;
+                $notif->message = 'commented on your post';
                 $notif->user_id = $post->user_id;
                 $notif->save(false);
                 $notif->link = Url::to(['notification/view', 'idNotif' => $notif->id, 'idPost' => $id]);
@@ -86,7 +87,8 @@ class PostController extends Controller
             foreach ($post->comments as $value) {
                 if(!in_array($value->user_id, $users)){
                     $notif = new Notification();
-                    $notif->message = Yii::$app->user->identity->displayed_name.' commented on a post you commented before';
+                    $notif->author = Yii::$app->user->identity->displayed_name;
+                    $notif->message = 'commented on a post you commented before';
                     $notif->user_id = $value->user_id;
                     $notif->save(false);
                     $notif->link = Url::to(['notification/view', 'idNotif' => $notif->id, 'idPost' => $id]);

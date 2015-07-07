@@ -40,9 +40,7 @@ return [
             'class' => 'yii\caching\FileCache'
         ],
     ],
-    // set target language to be Russian
     'language' => 'fr-FR',
     
-    // set source language to be English
     'sourceLanguage' => 'en-US',
 ];

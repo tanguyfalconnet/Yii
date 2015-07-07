@@ -17,7 +17,9 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    'Created By' => 'Creer par',
+    'spreaded your post' => 'a tartine votre post',
+    'commented on your post' => 'a commente votre post',
+    'commented on a post you commented before' => 'a commente un post que vous avez commente',
     'Accept' => 'Valider',
     'Admin' => 'Admin',
     'Are you sure you want to delete this item?' => 'Etes-vous sur de vouloir supprimer cet element ?',
@@ -25,6 +27,7 @@ return [
     'Comments' => 'Commentaires',
     'Create' => 'Creer',
     'Create Post' => 'Creer un post',
+    'Created By' => 'Creer par',
     'Date' => 'Date',
     'Delete' => 'Supprimer',
     'Displayed name' => 'Nom d\'affichage',

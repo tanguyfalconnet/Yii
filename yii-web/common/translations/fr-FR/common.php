@@ -17,15 +17,17 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    'ID' => 'ID',
-    'Post ID' => 'ID Post',
-    'User ID' => 'ID Utilisateur',
+    'Created At' => '',
+    'Updated At' => '',
     'Displayed Name' => 'Nom d\'affichage',
     'Email' => 'Email',
+    'ID' => 'ID',
     'Image' => 'Image',
     'Password' => 'Mot de passe',
+    'Post ID' => 'ID Post',
     'Remember me' => 'Se souvenir de moi',
     'Text' => 'Texte',
     'Title' => 'Titre',
+    'User ID' => 'ID Utilisateur',
     'Username' => 'Nom de connexion',
 ];

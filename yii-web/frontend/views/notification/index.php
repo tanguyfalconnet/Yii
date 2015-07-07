@@ -23,11 +23,11 @@ $this->params['breadcrumbs'][] = $this->title;
                 'content' => function ($model, $key, $index, $column){
                     if($model->is_watched == 1)
                     {
-                        return Html::a($model->message, $model->link);
+                        return Html::a($model->author.' '.Yii::t('frontend', $model->message), $model->link);
                     }
                     else
                     {
-                        return Html::tag('b', Html::a($model->message, $model->link));
+                        return Html::tag('b', Html::a($model->author.' '.Yii::t('frontend', $model->message), $model->link));
                     }
                     
                 }

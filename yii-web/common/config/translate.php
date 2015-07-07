@@ -68,9 +68,9 @@ return [
     // Connection component to use. Optional.
     'db' => 'db',
     // Custom source message table. Optional.
-    // 'sourceMessageTable' => '{{%source_message}}',
+    'sourceMessageTable' => 'source_translation',
     // Custom name for translation message table. Optional.
-    // 'messageTable' => '{{%message}}',
+    'messageTable' => 'translation',
     */
 
     /*
