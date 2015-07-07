@@ -7,7 +7,7 @@ use yii\widgets\ActiveForm;
 /* @var $model common\models\Post */
 
 $this->title = Yii::t('backend', 'Update Post');
-$this->params['breadcrumbs'][] = ['label' => Yii::t('backend', 'Posts management'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('backend', 'Posts Management'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = Yii::t('backend', 'Update');
 ?>
 <div class="post-update">

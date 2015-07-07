@@ -6,9 +6,9 @@ use yii\widgets\ActiveForm;
 /* @var $this yii\web\View */
 /* @var $model common\models\Comment */
 
-$this->title = 'Update Comment';
-$this->params['breadcrumbs'][] = ['label' => 'Comments management', 'url' => ['index']];
-$this->params['breadcrumbs'][] = 'Update';
+$this->title = Yii::t('backend', 'Update Comment');
+$this->params['breadcrumbs'][] = ['label' => Yii::t('backend', 'Comments Management'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = Yii::t('backend', 'Update');
 ?>
 <div class="comment-update">
 

@@ -17,6 +17,7 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
+    'Update Comment' => 'Modification d\'un commentaire',
     'Account' => 'Compte',
     'Are you sure you want to delete this item?' => 'Etes-vous sur de vouloir supprimer cet element ?',
     'Comment' => 'Commentaire',
@@ -28,6 +29,7 @@ return [
     'Email' => 'Email',
     'Home' => 'Accueil',
     'Image' => 'Image',
+    'Login' => 'Connexion',
     'Logout' => 'Deconnexion',
     'Password' => 'Mot de passe',
     'Please contact us if you think this is a server error. Thank you.' => 'Merci de nous contacter si vous penser qu\'il s\'agit d\'une erreur serveur. Merci.',
@@ -42,7 +44,6 @@ return [
     'User' => 'Utilisateur',
     'Username' => 'Nom de connexion',
     'Users Management' => 'Administration d\'utilisateurs',
-    'You can now access to some fucking amazing features !' => 'Tu peux acceder a tous pleins de fonctionnalites fabuleuses !',
-    'Login' => 'Connexion',
     'Welcome friend!' => 'Bonjour l\'ami !',
+    'You can now access to some fucking amazing features !' => 'Tu peux acceder a tous pleins de fonctionnalites fabuleuses !',
 ];
