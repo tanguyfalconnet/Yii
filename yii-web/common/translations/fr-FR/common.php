@@ -17,8 +17,8 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    'Created At' => '',
-    'Updated At' => '',
+    'Created At' => 'Créé à',
+    'Updated At' => 'Modifié à',
     'Displayed Name' => 'Nom d\'affichage',
     'Email' => 'Email',
     'ID' => 'ID',

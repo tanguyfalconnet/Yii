@@ -33,13 +33,6 @@ use common\models\Smiley;
                 ]);
             }
         ?>
-<!--        </a>
-            }else{
-        Url::to(['tartine/remove', 'postId' => $model->id]); " style="margin-left:30%;">
-        Html::img('images/remove.png', ['style' => 'margin-left:80%;width:3em;'])
-        </a>
-        
-            }-->
             
     </h6>
     <hr>
